@@ -2,6 +2,11 @@
 
 namespace CalculatorCLI
 {
+    using AST;
+    using Lexer;
+    using Parser;
+    using Object;
+    using Evaluate;
     class Program
     {
         static void Main(string[] args)
@@ -19,7 +24,11 @@ namespace CalculatorCLI
                     {
                         break;
                     }
-                    Console.Out.Write(input);
+                    var lexer = new Lexer.Lexer(input);
+                    var parser = new Parser.Parser(lexer);
+                    var expression = parser.Parse();
+                    var result = Evaluate.Evaluator.Eval(expression);
+                    Console.Out.Write(result.Inspect());
                     Console.Out.Write(Environment.NewLine);
                 }
                 catch(Exception e)

@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Lexer\" />
     <Folder Include="Parser\" />
+    <Folder Include="Evaluate\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalculatorCLI\CalculatorCLI.csproj" />

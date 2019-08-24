@@ -32,7 +32,9 @@
                 new ParserTestCase("10 - 12 * 12", "(10 - (12 * 12))"),
                 new ParserTestCase("16 / 4 ^ 2", "(16 / (4 ^ 2))"),
                 new ParserTestCase("(5 - 2) * 3", "((5 - 2) * 3)"),
-                new ParserTestCase(" 5 +((12 + 8) / 4))", "(5 + ((12 + 8) / 4))")
+                new ParserTestCase(" 5 +((12 + 8) / 4))", "(5 + ((12 + 8) / 4))"),
+                new ParserTestCase("-4 * 5 + 2", "(((- 4) * 5) + 2)"),
+                new ParserTestCase("5 + -3", "(5 + (- 3))"),
             };
             foreach(var tt in tests)
             {
