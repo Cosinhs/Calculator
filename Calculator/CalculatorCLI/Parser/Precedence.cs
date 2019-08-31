@@ -18,7 +18,7 @@
         PRODUCT = 2,
 
         /// <summary>
-        /// precedence for - (as precendce)
+        /// precedence for - (as prefix)
         /// </summary>
         PREFIX = 3,
 
