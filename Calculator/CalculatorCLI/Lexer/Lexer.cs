@@ -54,7 +54,7 @@
                     }
                     else
                     {
-                        token = new Token { Type = TokenType.ILLEGAL, Literal = "" };
+                        token = new Token { Type = TokenType.ILLEGAL, Literal = $"{character}" };
                     }
                     break;
             }
