@@ -9,18 +9,19 @@
         public Lexer(string input)
         {
             this.input = input;
-            this.position = 0;
+            position = 0;
         }
 
         public Token NextToken()
         {
-            this.SkipWhitespace();
-            if (this.position >= this.input.Length)
+            SkipWhitespace();
+            if (position >= input.Length)
             {
                 return new Token { Type = TokenType.EOF, Literal = "" };
             }
-            Token token = null;
-            char character = this.input[this.position];
+
+            char character = input[position];
+            Token token;
             switch (character)
             {
                 case '+':
@@ -42,31 +43,31 @@
                     token = new Token { Type = TokenType.LPAREN, Literal = "(" };
                     break;
                 case ')':
-                    token = new Token { Type = TokenType.RPAREN, Literal = ")"};
+                    token = new Token { Type = TokenType.RPAREN, Literal = ")" };
                     break;
                 default:
-                    if(IsDigit(character))
+                    if (IsDigit(character))
                     {
                         token = new Token { Type = TokenType.INT };
-                        token.Literal = this.ReadNumber();
-                        
+                        token.Literal = ReadNumber();
+
                     }
                     else
                     {
-                        token = new Token { Type = TokenType.ILLEGAL, Literal=""};
+                        token = new Token { Type = TokenType.ILLEGAL, Literal = "" };
                     }
                     break;
             }
-            this.position++;
+            position++;
             return token;
 
         }
 
         private void SkipWhitespace()
         {
-            while(this.position < this.input.Length && IsWhitespace(this.input[this.position]))
+            while(position < input.Length && IsWhitespace(input[position]))
             {
-                this.position++;
+                position++;
             }
         }
 
@@ -74,11 +75,11 @@
         private string ReadNumber()
         {
             int position = this.position;
-            while(this.position < this.input.Length && IsDigit(this.input[this.position]))
+            while(this.position < input.Length && IsDigit(input[this.position]))
             {
                 this.position++;
             }
-            string number = this.input.Substring(position, this.position - position);
+            string number = input.Substring(position, this.position - position);
             this.position--;
             return number;
         }
