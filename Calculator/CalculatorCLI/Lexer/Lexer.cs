@@ -17,7 +17,7 @@
             this.SkipWhitespace();
             if (this.position >= this.input.Length)
             {
-                return new Token { Type = TokenType.EOF, Literal=""};
+                return new Token { Type = TokenType.EOF, Literal = "" };
             }
             Token token = null;
             char character = this.input[this.position];

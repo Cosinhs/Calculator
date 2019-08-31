@@ -6,22 +6,22 @@ namespace CalculatorCLI.Evaluate
     {
         public static Object.Object Eval(Expression expression)
         {
-            if(expression is AST.IntegerExpression)
+            if(expression is IntegerExpression)
             {
                 return new Object.IntegerObject { Value = ((IntegerExpression)expression).Value };
             }
-            if(expression is AST.PrefixExpression)
+            if(expression is PrefixExpression)
             {
-                return EvalPrefixExpression(expression as AST.PrefixExpression);
+                return EvalPrefixExpression(expression as PrefixExpression);
             }
-            if(expression is AST.InfixExpression)
+            if(expression is InfixExpression)
             {
-                return EvalInfixExpression(expression as AST.InfixExpression);
+                return EvalInfixExpression(expression as InfixExpression);
             }
             throw new Exception($"Unsupported expression {expression.TokenLiteral()}");
         }
 
-        public static Object.Object EvalPrefixExpression(AST.PrefixExpression expression)
+        public static Object.Object EvalPrefixExpression(PrefixExpression expression)
         {
             Object.Object right = Eval(expression.Right);
             Object.IntegerObject rightInteger = right as Object.IntegerObject;
@@ -32,7 +32,7 @@ namespace CalculatorCLI.Evaluate
             return new Object.IntegerObject { Value = -1 * rightInteger.Value };
         }
 
-        public static Object.Object EvalInfixExpression(AST.InfixExpression expression)
+        public static Object.Object EvalInfixExpression(InfixExpression expression)
         {
             Object.Object left = Eval(expression.Left);
             Object.IntegerObject leftInteger = left as Object.IntegerObject;
